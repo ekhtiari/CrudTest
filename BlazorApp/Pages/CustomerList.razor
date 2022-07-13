@@ -1,0 +1,71 @@
+﻿@page "/customerlist"
+@inject HttpClient Http
+
+
+<PageTitle>Customer List</PageTitle>
+
+
+@if (items == null)
+{
+    <p>
+        <em>Loading ...</em>
+    </p>
+}
+else
+{
+    <table class="table table-responsive table-hover">
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        
+        </thead>
+        <tbody>
+        @foreach (CustomerInfo item in items.items)
+        {
+            i++;
+            <tr>
+                <td>@i</td>
+                <td>@item.firstName</td>
+                <td>@item.lastName</td>
+                <td>@item.email</td>
+                <td>
+                    
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    int i = 0;
+    private Root? items;
+
+    protected override async Task OnInitializedAsync()
+    {
+        items  = await Http.GetFromJsonAsync<Root>("https://localhost:7188/customer");
+    }
+
+    
+    
+    public class CustomerInfo
+    {
+        public string id { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string email { get; set; }
+    }
+
+    public class Root
+    {
+        public int totalCount { get; set; }
+        public List<CustomerInfo> items { get; set; }
+    }
+
+}

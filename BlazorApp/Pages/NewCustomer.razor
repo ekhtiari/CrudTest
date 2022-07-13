@@ -1,0 +1,88 @@
+﻿@page "/newcustomer"
+@using BlazorApp.Model
+@inject HttpClient _http
+@inject ILogger<NewCustomer> _logger
+
+
+<PageTitle>New Customer</PageTitle>
+<label type="text">@_apiresult</label>
+<EditForm Model="@_newCustomer" OnValidSubmit="@OnSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+
+    <div class="form-group">
+        <label >First Name</label>
+        <InputText @bind-Value="_newCustomer.firstName" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label >Last Name</label>
+        <InputText @bind-Value="_newCustomer.lastName" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label >Birthday</label>
+        <InputDate @bind-Value="_newCustomer.dateOfBirth" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="txtPhone">Phone Number</label>
+        <InputText @bind-Value="_newCustomer.phoneNumber" class="form-control" id="txtPhone"/>
+    </div>
+    <div class="form-group">
+        <label for="txtEmail">Email </label>
+        <InputText @bind-Value="_newCustomer.email" class="form-control" id="txtEmail"/>
+    </div>
+    <div class="form-group">
+        <label for="txtBank">Bank Number</label>
+        <InputText @bind-Value="_newCustomer.bankAccountNumber" class="form-control" id="txtBank"/>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Save"/>
+</EditForm>
+
+
+@code {
+
+    string _apiresult = "";
+
+    private readonly Model.NewCustomer _newCustomer = new Model.NewCustomer()
+    {
+        dateOfBirth = DateTime.UtcNow
+    };
+
+
+    private async Task OnSubmit(EditContext context)
+    {
+        if (context != null && context.Validate())
+        {
+            _logger.LogInformation("all data send successfully");
+            Model.NewCustomer? model = context.Model as Model.NewCustomer;
+            HttpResponseMessage result = await _http.PostAsJsonAsync("https://localhost:7188/customer", model);
+
+            var response =await result.Content.ReadFromJsonAsync<ApiResponse>();
+            if (result.IsSuccessStatusCode)
+            {
+                if (response.id!=Guid.Empty)
+                {
+                    _logger.LogInformation("all data send successfully");
+                    _apiresult = "All Data save successfully";
+                }
+                else
+                {
+                    _apiresult = response.error.message;
+                    _logger.LogError(response.error.message);
+                }
+               
+            }
+            else
+            {
+                _logger.LogError("something wrong");
+                _apiresult = "Something wrong";
+            }
+        }
+        else
+        {
+            _apiresult = "form is not valid";
+            _logger.LogError("form is not valid");
+        }
+    }
+
+}
