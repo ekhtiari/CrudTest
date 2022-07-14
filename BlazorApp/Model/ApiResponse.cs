@@ -4,12 +4,12 @@
 
 public class Error
 {
-    public int code { get; set; }
-    public string message { get; set; }
+    public int Code { get; set; }
+    public string? Message { get; set; }
 }
 
 public class ApiResponse
 {
-    public Guid id { get; set; }
-    public Error error { get; set; }
+    public Guid Id { get; set; }
+    public Error? Error { get; set; }
 }

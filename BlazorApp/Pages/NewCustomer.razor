@@ -12,27 +12,27 @@
 
     <div class="form-group">
         <label >First Name</label>
-        <InputText @bind-Value="_newCustomer.firstName" class="form-control"/>
+        <InputText @bind-Value="_newCustomer.FirstName" class="form-control"/>
     </div>
     <div class="form-group">
         <label >Last Name</label>
-        <InputText @bind-Value="_newCustomer.lastName" class="form-control"/>
+        <InputText @bind-Value="_newCustomer.LastName" class="form-control"/>
     </div>
     <div class="form-group">
         <label >Birthday</label>
-        <InputDate @bind-Value="_newCustomer.dateOfBirth" class="form-control"/>
+        <InputDate @bind-Value="_newCustomer.DateOfBirth" class="form-control"/>
     </div>
     <div class="form-group">
         <label for="txtPhone">Phone Number</label>
-        <InputText @bind-Value="_newCustomer.phoneNumber" class="form-control" id="txtPhone"/>
+        <InputText @bind-Value="_newCustomer.PhoneNumber" class="form-control" id="txtPhone"/>
     </div>
     <div class="form-group">
         <label for="txtEmail">Email </label>
-        <InputText @bind-Value="_newCustomer.email" class="form-control" id="txtEmail"/>
+        <InputText @bind-Value="_newCustomer.Email" class="form-control" id="txtEmail"/>
     </div>
     <div class="form-group">
         <label for="txtBank">Bank Number</label>
-        <InputText @bind-Value="_newCustomer.bankAccountNumber" class="form-control" id="txtBank"/>
+        <InputText @bind-Value="_newCustomer.BankAccountNumber" class="form-control" id="txtBank"/>
     </div>
 
     <input type="submit" class="btn btn-primary" value="Save"/>
@@ -41,11 +41,11 @@
 
 @code {
 
-    string _apiresult = "";
+    string? _apiresult = "";
 
     private readonly Model.NewCustomer _newCustomer = new Model.NewCustomer()
     {
-        dateOfBirth = DateTime.UtcNow
+        DateOfBirth = DateTime.UtcNow
     };
 
 
@@ -60,15 +60,15 @@
             var response =await result.Content.ReadFromJsonAsync<ApiResponse>();
             if (result.IsSuccessStatusCode)
             {
-                if (response.id!=Guid.Empty)
+                if (response.Id!=Guid.Empty)
                 {
                     _logger.LogInformation("all data send successfully");
                     _apiresult = "All Data save successfully";
                 }
                 else
                 {
-                    _apiresult = response.error.message;
-                    _logger.LogError(response.error.message);
+                    _apiresult = response.Error.Message;
+                    _logger.LogError(response.Error.Message);
                 }
                
             }

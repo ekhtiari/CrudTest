@@ -1,6 +1,6 @@
 ﻿using Mc2.CrudTest.Application;
-using Mc2.CrudTest.Application.Queries.GetAllCustomers;
 using Mc2.CrudTest.Infrastructure.Customer.Command.Create;
+using Mc2.CrudTest.Infrastructure.Customer.Queries.GetAllCustomers;
 using Mc2.CrudTest.Infrastructure.Queries.GetAllCustomers;
 using Microsoft.AspNetCore.Mvc;
 namespace Mc2.CrudTest.Api.Controllers.V1;

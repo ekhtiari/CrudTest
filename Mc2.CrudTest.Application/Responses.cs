@@ -34,10 +34,10 @@ public class BaseListQuery
     public int StartPage { get; set; } = 1;
     [DefaultValue(10)]
     public int PageSize { get; set; } = 10;
-    public List<string> Includes { get; set; }
-    public List<string> OrderByFields { get; set; }
-    public List<bool> OrderByDescs { get; set; }
-    public List<Guid> SpecificIdsForFetch { get; set; }
+    public List<string>? Includes { get; set; }
+    public List<string>? OrderByFields { get; set; }
+    public List<bool>? OrderByDescs { get; set; }
+    public List<Guid>? SpecificIdsForFetch { get; set; }
 }
 
 

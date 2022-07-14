@@ -7,19 +7,19 @@ namespace BlazorApp.Model;
 public class NewCustomer
 {
     [Required(ErrorMessage = "First Name must be enter")]
-    public string firstName { get; set; }
+    public string? FirstName { get; set; }
     [Required(ErrorMessage = "Last Name must be enter")]
-    public string lastName { get; set; }
+    public string? LastName { get; set; }
     [Required(ErrorMessage = "Birthday must be enter")]
-    public DateTime dateOfBirth { get; set; }
+    public DateTime DateOfBirth { get; set; }
     [Required(ErrorMessage = "Phone number must be enter")]
     [ValidationPhoneNumber]
-    public string phoneNumber { get; set; }
+    public string? PhoneNumber { get; set; }
     [Required(ErrorMessage = "Email must be enter")]
     [EmailAddress(ErrorMessage = "Enter valid email Address")]
-    public string email { get; set; }
+    public string? Email { get; set; }
     [Required(ErrorMessage = "Bank Account Number must be enter")]
-    public string bankAccountNumber { get; set; }
+    public string? BankAccountNumber { get; set; }
 }
 
 

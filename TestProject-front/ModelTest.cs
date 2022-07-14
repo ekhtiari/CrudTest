@@ -1,11 +1,10 @@
 using System;
-using BlazorApp.Functions;
 using BlazorApp.Model;
 using Xunit;
 
 namespace TestProject_front;
 
-public class UnitTest1
+public class UnitTest
 {
     [Fact]
     public void Model_Validation_Email_Phone_Test()
@@ -13,12 +12,12 @@ public class UnitTest1
          
         NewCustomer newCustomer = new()
         {
-            firstName = "test",
-            lastName = "test",
-            phoneNumber = "+989100000000",
-            email = "test@test.com",
-            bankAccountNumber = "test",
-            dateOfBirth = DateTime.Now
+            FirstName = "test",
+            LastName = "test",
+            PhoneNumber = "+989100000000",
+            Email = "test@test.com",
+            BankAccountNumber = "test",
+            DateOfBirth = DateTime.Now
         };
 
 
@@ -35,11 +34,11 @@ public class UnitTest1
         NewCustomer newCustomer = new()
         {
             
-            lastName = "test",
-            phoneNumber = "+989100000000",
-            email = "test@test.com",
-            bankAccountNumber = "test",
-            dateOfBirth = DateTime.Now
+            LastName = "test",
+            PhoneNumber = "+989100000000",
+            Email = "test@test.com",
+            BankAccountNumber = "test",
+            DateOfBirth = DateTime.Now
         };
 
 
@@ -55,12 +54,12 @@ public class UnitTest1
     {
         NewCustomer newCustomer = new()
         {
-            firstName = "test",
-            lastName = "test",
-            phoneNumber = "+989100000000",
-            email = "test",
-            bankAccountNumber = "test",
-            dateOfBirth = DateTime.Now
+            FirstName = "test",
+            LastName = "test",
+            PhoneNumber = "+989100000000",
+            Email = "test",
+            BankAccountNumber = "test",
+            DateOfBirth = DateTime.Now
         };
 
 

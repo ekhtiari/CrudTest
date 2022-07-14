@@ -1,5 +1,4 @@
 ﻿using Mc2.CrudTest.Application;
-using Mc2.CrudTest.Application.Queries.GetAllCustomers;
 using Mc2.CrudTest.Infrastructure.Customer.Contract;
 using Mc2.CrudTest.Infrastructure.Queries.GetAllCustomers;
 using MediatR;

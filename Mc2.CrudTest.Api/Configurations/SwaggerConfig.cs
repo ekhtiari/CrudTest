@@ -3,8 +3,16 @@ using Microsoft.OpenApi.Models;
 
 namespace Mc2.CrudTest.Api.Configurations;
 
+/// <summary>
+/// 
+/// </summary>
 public static class SwaggerConfig
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public static void AddSwaggerConfiguration(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
@@ -21,6 +29,11 @@ public static class SwaggerConfig
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="app"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public static void UseSwaggerSetup(this IApplicationBuilder app)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
