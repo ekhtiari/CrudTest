@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using Mc2.CrudTest.Api.Configurations;
 using Mc2.CrudTest.Infrastructure;
 using Mc2.CrudTest.Infrastructure.Customer.Contract;
 using Mc2.CrudTest.Infrastructure.Domain.Customer;
@@ -38,7 +39,7 @@ builder.Services.AddMediatR(typeof(MediatorRegistration).GetTypeInfo().Assembly)
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerConfiguration();
 
 builder.Services.AddCors(o =>
 {
